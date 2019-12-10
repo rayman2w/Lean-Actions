@@ -64,7 +64,7 @@ jobs:
 
     - name: Add PassWall Repo
       env:
-	DIY_SH: 'opx86.sh'
+        DIY_SH: 'opx86.sh'
       run: |
         chmod +x $DIY_SH
         cd openwrt
