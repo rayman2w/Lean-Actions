@@ -11,7 +11,7 @@ on:
   release:
     types: [published]
   push:
-    branches:
+    branches: 
       - master
     paths:
       - 'opx86.config'
@@ -57,18 +57,10 @@ jobs:
         sudo -E apt-get clean
 
     - name: Clone source code
-      env:
-        REPO_URL: https://github.com/openwrt/openwrt
-        REPO_BRANCH: openwrt-19.07
+      env: 
+        REPO_URL: https://github.com/Lienol/openwrt
+        REPO_BRANCH: my-19.07
       run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
-
-    - name: Add PassWall Repo
-      env:
-        DIY_SH: 'opx86.sh'
-      run: |
-        chmod +x $DIY_SH
-        cd openwrt
-        ../$DIY_SH
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
@@ -79,9 +71,13 @@ jobs:
     - name: Load custom configuration
       env:
         CONFIG_FILE: 'opx86.config'
+        DIY_SH: 'opx86.sh'
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        chmod +x $DIY_SH
+        cd openwrt
+        ../$DIY_SH
         make defconfig
 
 #    - name: SSH connection to Actions
