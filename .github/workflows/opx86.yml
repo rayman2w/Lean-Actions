@@ -64,11 +64,11 @@ jobs:
 
     - name: Add PassWall Repo
       env:
-        DIY_SH: 'opx86.sh'
-      run: |
-        chmod +x $DIY_SH
-        cd openwrt
-        ../$DIY_SH
+       DIY_SH: 'opx86.sh'
+       run: |
+         chmod +x $DIY_SH
+         cd openwrt
+         ../$DIY_SH
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
