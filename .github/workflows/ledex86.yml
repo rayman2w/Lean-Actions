@@ -15,10 +15,11 @@ on:
       - master
     paths:
       - 'ledex86.config'
+      - 'ledex86.sh'
 #  schedule:
 #    - cron: 0 8 * * 5
-#  watch:
-#    types: [started]
+   watch:
+     types: [started]
 
 jobs:
   build:
