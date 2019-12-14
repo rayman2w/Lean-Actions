@@ -15,10 +15,11 @@ on:
       - master
     paths:
       - 'pw.config'
+      - 'pw.sh'
 #  schedule:
 #    - cron: 0 8 * * 5
-#  watch:
-#    types: [started]
+  watch:
+    types: [started]
 
 jobs:
   build:
