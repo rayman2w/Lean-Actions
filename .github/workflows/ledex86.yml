@@ -66,6 +66,9 @@ jobs:
     - name: Add VssR
       run: cd openwrt/package && git clone https://github.com/jerrykuku/luci-app-vssr 
 
+    - name: Add Argon theme
+      run: cd openwrt/package/lean && rm -rf luci-theme-argon && git clone https://github.com/jerrykuku/luci-theme-argon
+
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
