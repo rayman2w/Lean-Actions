@@ -87,9 +87,6 @@ jobs:
         ../$DIY_SH
         make defconfig
 
-     - name: Shift Default Theme from boostrap to argon
-       run: sed -i 's/boostrap/argon/g' openwrt/package/feeds/luci/luci-base/root/etc/config/luci
-
 #    - name: SSH connection to Actions
 #      uses: P3TERX/debugger-action@master
 
