@@ -5,7 +5,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: P&W Lede-CL
+name: P&W Lede-CL with SSR+
 
 on: 
   release:
@@ -14,7 +14,7 @@ on:
     branches: 
       - master
     paths:
-      - 'pw.config'
+      - 'pw_ssr.config'
       - 'pw.sh'
 #  schedule:
 #    - cron: 0 8 * * 5
@@ -80,7 +80,7 @@ jobs:
 
     - name: Load custom configuration
       env:
-        CONFIG_FILE: 'pw.config'
+        CONFIG_FILE: 'pw_ssr.config'
         DIY_SH: 'pw.sh'
       run: |
         [ -e files ] && mv files openwrt/files
