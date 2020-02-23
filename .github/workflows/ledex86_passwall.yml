@@ -5,21 +5,21 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: P&W Lede-CL with VSSR
+name: LeanOP-CL with PassWall
 
 on: 
-  release:
-    types: [published]
+#  release:
+#    types: [published]
   push:
     branches: 
       - master
     paths:
-      - 'pw_vssr.config'
-      - 'pw.sh'
+      - 'ledex86_passwall.config'
+      - 'ledex86.sh'
 #  schedule:
 #    - cron: 0 8 * * 5
-  watch:
-    types: [started]
+#   watch:
+#     types: [started]
 
 jobs:
   build:
@@ -63,17 +63,14 @@ jobs:
         REPO_BRANCH: master
       run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
 
-    - name: Add VssR
-      run: cd openwrt/package && git clone https://github.com/kiss2u/luci-app-vssr
+#   - name: Add VssR
+#     run: cd openwrt/package && git clone https://github.com/jerrykuku/luci-app-vssr 
 
-    - name: Add Maxminddb
-      run: cd openwrt/package/lean && git clone https://github.com/jerrykuku/lua-maxminddb.git
+#   - name: Add Argon theme
+#     run: cd openwrt/package/lean && rm -rf luci-theme-argon && git clone https://github.com/jerrykuku/luci-theme-argon
 
-    - name: Update luci-theme-argon
-      run: cd openwrt/package/lean && rm -rf luci-theme-argon && git clone https://github.com/jerrykuku/luci-theme-argon
-
-#   - name: Add Passwall Repo
-#     run: cd openwrt && sed -i '3a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
+    - name: Add Passwall Repo
+      run: cd openwrt && sed -i '3a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
@@ -83,8 +80,8 @@ jobs:
 
     - name: Load custom configuration
       env:
-        CONFIG_FILE: 'pw_vssr.config'
-        DIY_SH: 'pw.sh'
+        CONFIG_FILE: 'ledex86_passwall.config'
+        DIY_SH: 'ledex86.sh'
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
