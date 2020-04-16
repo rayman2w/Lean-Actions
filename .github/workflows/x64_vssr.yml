@@ -66,6 +66,9 @@ jobs:
     - name: Add Vssr Repo
       run: cd openwrt/package/lean && git clone https://github.com/jerrykuku/lua-maxminddb.git && git clone https://github.com/jerrykuku/luci-app-vssr.git
 
+    - name: Update Theme
+      run: cd openwrt/package/lean && rm -rf luci-theme-argon && git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git
+      
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
