@@ -1,1 +1,4 @@
 diy.sh
+*.bak
+*.save
+*.bye
