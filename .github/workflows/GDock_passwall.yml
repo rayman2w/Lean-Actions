@@ -62,7 +62,10 @@ jobs:
       
     - name: Add Passwall Repo
       run: cd openwrt && sed -i '3a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
-
+      
+    - name: Clean feeds
+      run: cd openwrt && ./scripts/feeds clean
+      
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
