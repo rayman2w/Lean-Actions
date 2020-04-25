@@ -63,8 +63,8 @@ jobs:
 #   - name: Add Passwall Repo
 #     run: cd openwrt && sed -i '3a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 
-    - name: Add Additional Repo
-      run: cd openwrt/package && git clone https://github.com/kenzok8/small.git && git clone https://github.com/kenzok8/openwrt-packages.git
+#   - name: Add Additional Repo
+#     run: cd openwrt/package && git clone https://github.com/kenzok8/small.git && git clone https://github.com/kenzok8/openwrt-packages.git
 
     - name: Add Vssr Repo
       run: cd openwrt/package/lean && git clone https://github.com/jerrykuku/lua-maxminddb.git && git clone https://github.com/jerrykuku/luci-app-vssr.git
@@ -99,7 +99,7 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
-     - name: Compile the firmware
+    - name: Compile the firmware
       id: compile
       run: |
         cd openwrt
