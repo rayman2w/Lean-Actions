@@ -60,8 +60,8 @@ jobs:
     - name: Clone source code
       run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
       
-    - name: Add Passwall Repo
-      run: cd openwrt && sed -i '3a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
+    - name: Add Additional Repo
+      run: cd openwrt/package && git clone https://github.com/kenzok8/small.git && git clone https://github.com/kenzok8/openwrt-packages.git
       
     - name: Clean feeds
       run: cd openwrt && ./scripts/feeds clean
@@ -92,13 +92,13 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
-
+        
     - name: Compile the firmware
       id: compile
       run: |
         cd openwrt
         echo -e "$(nproc) thread compile"
-        make -j$(nproc) || make -j1 V=s
+        make -j$(nproc) || make -j1 || make -j1 V=s
         echo "::set-output name=status::success"
 
     - name: Upload bin directory
