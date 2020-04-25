@@ -67,7 +67,10 @@ jobs:
 
 #   - name: Update Theme
 #     run: cd openwrt/package/lean && rm -rf luci-theme-argon && git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git
-      
+
+    - name: Add Additional Repo
+      run: cd openwrt/package && git clone https://github.com/kenzok8/small.git && git clone https://github.com/kenzok8/openwrt-packages.git
+
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
@@ -100,7 +103,7 @@ jobs:
       run: |
         cd openwrt
         echo -e "$(nproc) thread compile"
-        make -j$(nproc) || make -j1 V=s
+        make -j$(nproc) || make -j1 || make -j1 V=s
         echo "::set-output name=status::success"
 
     - name: Upload bin directory
