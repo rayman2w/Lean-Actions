@@ -68,8 +68,8 @@ jobs:
         cd openwrt
         ../$DIY_P1_SH
 
-#    - name: Add Repo
-#      run: cd openwrt/package && git clone https://github.com/kenzok8/small.git
+    - name: Add Eqos & Tomato Material Theme
+      run: cd openwrt/package/lean && git clone https://github.com/kiss2u/luci-app-eqos && https://github.com/kiss2u/luci-theme-atmaterial-ColorIcon
 
     - name: Add SmartDNS
       run: cd openwrt/package/lean && git clone https://github.com/kiss2u/smartdns && git clone https://github.com/kiss2u/luci-app-smartdns
