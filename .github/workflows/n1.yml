@@ -9,8 +9,8 @@ name: LeanN1-CL with SSR
 
 on:
   repository_dispatch:
-  release:
-    types: published
+#  release:
+#    types: published
   push:
     branches:
       - master
