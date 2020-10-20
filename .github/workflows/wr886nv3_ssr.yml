@@ -9,8 +9,8 @@ name: TL-WR886N .ver 3 with SSR
 
 on:
   repository_dispatch:
-  release:
-    types: published
+#  release:
+#    types: published
   push:
     branches:
       - master
